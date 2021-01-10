@@ -1,7 +1,6 @@
 var app = require('express')();
 var http = require('http').createServer(app);
 const socketio = require('socket.io');
-const port = 3000
 const io = socketio(http, 
   {
     serveClient: true,
@@ -22,10 +21,9 @@ io.on('connection', (socket) => {
     console.log('a user connected');
   });
 
-app.get('/', (req, res) => res.send('hello!'));
-  http.listen(process.env.PORT, () => {
+  app.get('/', (req, res) => res.send('hello!'));
+  http.listen(3000, () => {
   console.log('listening on *:3000');
-  
 });
 
 
