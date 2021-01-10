@@ -2,7 +2,7 @@
   "name": "socket-backend",
   "version": "1.0.0",
   "description": "test",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "serve": "nodemon server.js"
   },
