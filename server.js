@@ -21,9 +21,11 @@ io.on('connection', (socket) => {
     console.log('a user connected');
   });
 
-  app.get('/', (req, res) => res.send('hello!'));
-  http.listen(3000, () => {
+app.get('/', (req, res) => res.send('hello!'));
+  http.listen(3000 || process.env.PORT, () => {
   console.log('listening on *:3000');
 });
+
+
 
 
