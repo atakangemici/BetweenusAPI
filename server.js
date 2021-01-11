@@ -2,13 +2,18 @@ var app = require('express')();
 var http = require('http').createServer(app);
 const socketio = require('socket.io');
 const io = socketio(http,
-    //   {
+
+
+    // {
     //     serveClient: true,
     //     cors: {
-    //       origin: "http://localhost:4200",
-    //       methods: ["GET", "POST"],
-    //       credentials: true
+    //         origin: "http://localhost:4200",
+    //         methods: ["GET", "POST"],
+    //         credentials: true
     //     }
+    // });
+
+
     {
         serveClient: true,
         cors: {
