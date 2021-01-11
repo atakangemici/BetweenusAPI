@@ -17,7 +17,7 @@ const io = socketio(http,
     {
         serveClient: true,
         cors: {
-            origin: "https://chat-angular-new.herokuapp.com",
+            origin: "https://aramizda-app.herokuapp.com",
             methods: ["GET", "POST"],
             credentials: true
         }
