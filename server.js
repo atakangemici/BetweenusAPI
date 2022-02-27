@@ -2,28 +2,25 @@ var app = require('express')();
 var http = require('http').createServer(app);
 const socketio = require('socket.io');
 const io = socketio(http,
-
-
-    // {
-    //     serveClient: true,
-    //     cors: {
-    //         origin: "http://localhost:4200",
-    //         methods: ["GET", "POST"],
-    //         credentials: true
-    //     }
-    // });
-
-
+    //Local
     {
         serveClient: true,
         cors: {
-            origin: "https://aramizda-app.herokuapp.com",
+            origin: "http://localhost:4200",
             methods: ["GET", "POST"],
             credentials: true
         }
     });
 
-
+    //Prod
+    // {
+    //     serveClient: true,
+    //     cors: {
+    //         origin: "https://aramizda-app.herokuapp.com",
+    //         methods: ["GET", "POST"],
+    //         credentials: true
+    //     }
+    // });
 
 io.on('connection', (socket) => {
     socket.on('message', (msg) => {
@@ -33,15 +30,17 @@ io.on('connection', (socket) => {
     console.log('a user connected');
 });
 
-// app.get('/', (req, res) => res.send('hello!'));
-// http.listen(3000, () => {
-//     console.log('listening on *:3000');
-// });
-
+//Local
 app.get('/', (req, res) => res.send('hello!'));
-http.listen(process.env.PORT, () => {
+http.listen(3000, () => {
     console.log('listening on *:3000');
 });
+
+//Prod
+// app.get('/', (req, res) => res.send('hello!'));
+// http.listen(process.env.PORT, () => {
+//     console.log('listening on *:3000');
+// });
 
 
 
