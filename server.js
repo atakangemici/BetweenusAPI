@@ -12,19 +12,31 @@ const io = socketio(http,
         }
     });
 
-    //Prod
-    // {
-    //     serveClient: true,
-    //     cors: {
-    //         origin: "https://aramizda-app.herokuapp.com",
-    //         methods: ["GET", "POST"],
-    //         credentials: true
-    //     }
-    // });
+//Prod
+// {
+//     serveClient: true,
+//     cors: {
+//         origin: "https://aramizda-app.herokuapp.com",
+//         methods: ["GET", "POST"],
+//         credentials: true
+//     }
+// });
+
+const Cryptr = require('cryptr');
+const cryptr = new Cryptr('myTotallySecretKey');
+
+
 
 io.on('connection', (socket) => {
     socket.on('message', (msg) => {
-        console.log(msg);
+        const encryptedMessage = cryptr.encrypt(msg.message);
+        const encryptedPassword = cryptr.encrypt(msg.password);
+        const encryptedUserName = cryptr.encrypt(msg.users);
+
+        msg.message = encryptedMessage;
+        msg.password = encryptedPassword;
+        msg.users = encryptedUserName;
+
         socket.broadcast.emit('message-broadcast', msg);
     });
     console.log('a user connected');
