@@ -16,7 +16,7 @@ const io = socketio(http,
 {
     serveClient: true,
     cors: {
-        origin: "https://aramizda-app.herokuapp.com",
+        origin: "https://betweenus-app.herokuapp.com",
         methods: ["GET", "POST"],
         credentials: true
     }
